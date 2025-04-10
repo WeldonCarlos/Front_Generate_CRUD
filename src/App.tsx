@@ -53,11 +53,8 @@ function App() {
         document.body.appendChild(link)
         link.click()
         link.remove()
-      } catch (error) {
-        console.error("Erro ao gerar ou baixar o arquivo:", error)
-        setErrorMessage("Erro ao gerar ou baixar o arquivo. Verifique os dados e tente novamente.")
-      } finally {
-        setLoading(false)
+        
+        setActiveStep(-1)
         setFormData({
           db_host: '',
             db_port: '',
@@ -66,11 +63,16 @@ function App() {
             db_password: '',
             table_name: '',
         })
-        setActiveStep(0)
+      } catch (error) {
+        console.error("Erro ao gerar ou baixar o arquivo:", error)
+        setErrorMessage("Erro ao gerar ou baixar o arquivo. Verifique os dados e tente novamente.")
+      } finally {
+        setLoading(false)
+        
       }
     }
 
-    setActiveStep((prev) => prev + 1)
+     setActiveStep((prev) => prev + 1)
   }
 
   const handleBack = () => setActiveStep((prev) => prev - 1)
