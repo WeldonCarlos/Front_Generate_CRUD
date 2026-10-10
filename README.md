@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# Front Generate CRUD
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface React e TypeScript que conduz o usuário por etapas para gerar e baixar uma API CRUD a partir de uma tabela MySQL.
 
-Currently, two official plugins are available:
+## O que o projeto apresenta
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Formulário de conexão com host, porta, banco, usuário e senha.
+- Etapa de seleção do nome da tabela.
+- Validação dos campos obrigatórios, estado de carregamento e mensagens de erro.
+- Solicitação de geração e download do ZIP retornado pelo serviço Flask.
 
-## Expanding the ESLint configuration
+## Tecnologias
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+React · TypeScript · Vite · Material UI · Axios
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Executar localmente
+
+```bash
+git clone https://github.com/WeldonCarlos/Front_Generate_CRUD.git
+cd Front_Generate_CRUD
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Abra o endereço informado no terminal.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Configuração e integração
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+O backend complementar é [API Generate](https://github.com/WeldonCarlos/API_Generate). Informe somente credenciais de um banco de teste autorizado; elas são enviadas ao serviço de geração e incluídas no pacote retornado.
+
+## Comandos disponíveis
+
+| Comando | Uso |
+| --- | --- |
+| `npm run dev` | `vite` |
+| `npm run build` | `tsc -b && vite build` |
+| `npm run lint` | `eslint .` |
+| `npm run preview` | `vite preview` |
+
+Os scripts são os definidos em `package.json`; sua presença não indica que foram executados nesta revisão de documentação.
+
+## Estrutura
+
+- `README.md`
+- `eslint.config.js`
+- `index.html`
+- `package.json`
+- `public/`
+- `src/`
+- `tsconfig.app.json`
+- `tsconfig.json`
+- `tsconfig.node.json`
+
+## Estado atual
+
+A tela utiliza um endpoint do Render definido diretamente em `src/App.tsx`. O arquivo `src/services/configAxios.ts` aponta para localhost, mas não controla as chamadas feitas nessa tela. Para execução local integrada, ajuste as URLs de `App.tsx` para o serviço que você estiver executando.
+
+## Autoria
+
+[Weldon Carlos](https://github.com/WeldonCarlos) · [LinkedIn](https://www.linkedin.com/in/weldon-carlos-41b488231/)
